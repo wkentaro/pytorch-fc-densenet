@@ -4,9 +4,9 @@ import torch
 from torch import nn
 
 
-__all__ = ['FCDenseNet', 'fcdensenet_tiny', 'fcdensenet56_nodrop',
-           'fcdensenet56', 'fcdensenet67', 'fcdensenet103',
-           'fcdensenet103_nodrop']
+__all__ = ['FCDense', 'fcdense_tiny', 'fcdense56_nodrop',
+           'fcdense56', 'fcdense67', 'fcdense103',
+           'fcdense103_nodrop']
 
 
 class DenseBlock(nn.Module):
@@ -55,11 +55,11 @@ class DenseBlock(nn.Module):
             )
 
 
-class FCDenseNet(nn.Module):
+class FCDense(nn.Module):
 
     def __init__(self, depths, growth_rates, n_scales=5, n_channel_start=48,
                  n_classes=12, drop_rate=0, bottle_neck=False):
-        super(FCDenseNet, self).__init__()
+        super(FCDense, self).__init__()
         self.n_scales = n_scales
         self.n_classes = n_classes
         self.n_channel_start = n_channel_start
@@ -149,27 +149,27 @@ class FCDenseNet(nn.Module):
         return nn.Sequential(*layers)
 
 
-def fcdensenet_tiny(drop_rate=0):
-    return FCDenseNet(2, 6, drop_rate=drop_rate)
+def fcdense_tiny(drop_rate=0):
+    return FCDense(2, 6, drop_rate=drop_rate)
 
 
-def fcdensenet56_nodrop():
-    return FCDenseNet(4, 12, drop_rate=0)
+def fcdense56_nodrop():
+    return FCDense(4, 12, drop_rate=0)
 
 
-def fcdensenet56(drop_rate=0.2):
-    return FCDenseNet(4, 12, drop_rate=drop_rate)
+def fcdense56(drop_rate=0.2):
+    return FCDense(4, 12, drop_rate=drop_rate)
 
 
-def fcdensenet67(drop_rate=0.2):
-    return FCDenseNet(5, 16, drop_rate=drop_rate)
+def fcdense67(drop_rate=0.2):
+    return FCDense(5, 16, drop_rate=drop_rate)
 
 
-def fcdensenet103(drop_rate=0.2):
-    return FCDenseNet([4, 5, 7, 10, 12, 15, 12, 10, 7, 5, 4], 16,
-                      drop_rate=drop_rate)
+def fcdense103(drop_rate=0.2):
+    return FCDense([4, 5, 7, 10, 12, 15, 12, 10, 7, 5, 4], 16,
+                   drop_rate=drop_rate)
 
 
-def fcdensenet103_nodrop(drop_rate=0):
-    return FCDenseNet([4, 5, 7, 10, 12, 15, 12, 10, 7, 5, 4], 16,
-                      drop_rate=drop_rate)
+def fcdense103_nodrop(drop_rate=0):
+    return FCDense([4, 5, 7, 10, 12, 15, 12, 10, 7, 5, 4], 16,
+                   drop_rate=drop_rate)
