@@ -1,5 +1,8 @@
+# fork of https://gist.github.com/felixgwu/045c887b6ccdf0edf4648da0c40bcc12
+
 import torch
 from torch import nn
+
 
 __all__ = ['FCDenseNet', 'fcdensenet_tiny', 'fcdensenet56_nodrop',
            'fcdensenet56', 'fcdensenet67', 'fcdensenet103',
