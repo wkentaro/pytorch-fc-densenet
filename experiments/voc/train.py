@@ -33,7 +33,7 @@ def main(config_file):
     cuda = torch.cuda.is_available()
 
     seed = 1
-    max_iter = 100000
+    max_iter = 1000000
 
     torch.manual_seed(seed)
     if cuda:
